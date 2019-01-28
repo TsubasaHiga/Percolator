@@ -1,0 +1,56 @@
+@charset "utf-8";
+
+.c-input,
+.c-select,
+.c-textarea {
+    .is-error & {
+    }
+}
+
+// input
+// ----------------------------------------------------------
+.c-input {
+    @include media(sm) {
+    }
+}
+// Chromeでオートフィルした時にinputが黄色くなるのを回避
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 100px #fff inset !important;
+}
+
+// textarea
+// ----------------------------------------------------------
+.c-textarea {
+    @include media(sm) {
+    }
+}
+
+// placeholder
+// ----------------------------------------------------------
+:placeholder-shown {
+    color: #ccc;
+}
+::-webkit-input-placeholder {
+    color: #ccc;
+}
+:-moz-placeholder {
+    color: #ccc; opacity: 1;
+}
+::-moz-placeholder {
+    color: #ccc; opacity: 1;
+}
+:-ms-input-placeholder {
+    color: #ccc;
+}
+.c-select.is-empty {
+    color: #ccc;
+}
+
+// other
+// ----------------------------------------------------------
+.c-required {
+    color: #c00;
+}
+.c-error {
+    color: #c00;
+}

@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+// 下層ページヘッダー
+// ----------------------------------------------------------
+.l-page-header {
+    align-items: center;
+    background-color: #f1f2f3;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    height: 150px;
+    width: 100%;
+    &__inner {
+        width: $mainW;
+    }
+    &__tit {
+        @include fz(20, 20, 700);
+    }
+
+    @include media(sm) {
+        height: 100px;
+        &__inner {
+            padding: 0 $spSpace;
+            width: 100%;
+        }
+    }
+}

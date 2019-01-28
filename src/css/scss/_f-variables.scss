@@ -1,0 +1,107 @@
+@charset "utf-8";
+
+// layout
+// ----------------------------------------------------------
+$breakPoint    : 768px;
+$bodyW         : 1280px;
+$mainW         : 1280px;
+$headerH       : 80px;
+$spHeaderH     : 60px;
+$sideW         : 200px;
+$space         : 20px;
+$spSpace       : 20px;
+
+
+// font
+// ----------------------------------------------------------
+@font-face {
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Medium");
+  font-weight: 100;
+}
+@font-face {
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Medium");
+  font-weight: 200;
+}
+@font-face {
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Medium");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Medium");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Bold");
+  font-weight: 600;
+}
+$fontFamily    : 'yakuhanjp', 'Yu Gothic Medium', '游ゴシック Medium', YuGothic, '游ゴシック体', 'ヒラギノ角ゴ Pro W3', 'メイリオ', sans-serif;
+$fontSpFamily  : 'yakuhanjp', 'Hiragino Kaku Gothic ProN', Meiryo, メイリオ, sans-serif;
+$fontRobotoCond: 'Roboto Condensed', sans-serif;
+$fontSize      : 14px;
+$lineHeight    : (24/14);
+
+
+// color
+// ----------------------------------------------------------
+$color--body          : #fff;
+
+$color--text          : #1f1f1f;
+$color--link          : #0874dc;
+
+$color--border        : #eee;
+
+
+// グラデーション
+// ----------------------------------------------------------
+$gradation-blue: linear-gradient( 45deg, rgb(12,33,195) 0%, rgb(8,116,220) 100%);
+
+
+// easing
+// ----------------------------------------------------------
+$easeInSine    : cubic-bezier(0.47, 0, 0.745, 0.715);
+$easeOutSine   : cubic-bezier(0.39, 0.575, 0.565, 1);
+$easeInOutSine : cubic-bezier(0.445, 0.05, 0.55, 0.95);
+$easeInQuad    : cubic-bezier(0.55, 0.085, 0.68, 0.53);
+$easeOutQuad   : cubic-bezier(0.25, 0.46, 0.45, 0.94);
+$easeInOutQuad : cubic-bezier(0.455, 0.03, 0.515, 0.955);
+$easeInCubic   : cubic-bezier(0.55, 0.055, 0.675, 0.19);
+$easeOutCubic  : cubic-bezier(0.215, 0.61, 0.355, 1);
+$easeInOutCubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+$easeInQuart   : cubic-bezier(0.895, 0.03, 0.685, 0.22);
+$easeOutQuart  : cubic-bezier(0.165, 0.84, 0.44, 1);
+$easeInOutQuart: cubic-bezier(0.77, 0, 0.175, 1);
+$easeInQuint   : cubic-bezier(0.755, 0.05, 0.855, 0.06);
+$easeOutQuint  : cubic-bezier(0.23, 1, 0.32, 1);
+$easeInOutQuint: cubic-bezier(0.86, 0, 0.07, 1);
+$easeInExpo    : cubic-bezier(0.95, 0.05, 0.795, 0.035);
+$easeOutExpo   : cubic-bezier(0.19, 1, 0.22, 1);
+$easeInOutExpo : cubic-bezier(1, 0, 0, 1);
+$easeInCirc    : cubic-bezier(0.6, 0.04, 0.98, 0.335);
+$easeOutCirc   : cubic-bezier(0.075, 0.82, 0.165, 1);
+$easeInOutCirc : cubic-bezier(0.785, 0.135, 0.15, 0.86);
+$easeInBack    : cubic-bezier(0.6, -0.28, 0.735, 0.045);
+$easeOutBack   : cubic-bezier(0.175, 0.885, 0.32, 1.275);
+$easeInOutBack : cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+
+// 共通easing
+// ----------------------------------------------------------
+$comMS  : 300ms;
+$comES  : $easeOutCubic;
+
+
+// 基本アニメーション
+// ----------------------------------------------------------
+@keyframes show{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}

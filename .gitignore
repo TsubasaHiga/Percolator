@@ -1,0 +1,13 @@
+# COMMON
+node_modules/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+# Windows
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db

@@ -1,0 +1,379 @@
+@charset "utf-8";
+
+// mixin集
+// ----------------------------------------------------------
+// 01. 画像置換
+// 02. テキスト省略
+// 03. フォントサイズとラインハイトまとめて指定
+// 04. letter-spacingをトラッキングの数値から計算
+// 05. gradation
+// 06. media query
+// 07. くの字矢印
+// 08. 三角
+// 09. 疑似要素初期化
+// 10. ホバーで透過
+// 11. object-fit ie用Polyfill
+// 12. formスタイルリセット
+// 13. ie11only
+// 14. edgeonly
+// 15. ffonly
+// 16. safarionly
+// 17. notfirst
+// 18. last
+// 19. first
+// 20. expand
+// 21. 1.25倍
+// 22. placeholder
+// 23. picture100
+// ----------------------------------------------------------
+
+
+// 01__画像置換
+// ----------------------------------------------------------
+@mixin hideText() {
+    color: transparent;
+    font: 0/0 a;
+    overflow: hidden;
+    text-shadow: none;
+}
+
+
+// 02__テキスト省略
+// ----------------------------------------------------------
+@mixin ellipsis() {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+@mixin notEllipsis() {
+    overflow: inherit;
+    text-overflow: inherit;
+    white-space: inherit;
+}
+
+
+// 03__フォントサイズとラインハイトまとめて指定
+// ----------------------------------------------------------
+@mixin fz($size, $height: false, $weight: false) {
+
+    font-size: #{$size}px;
+    @if $weight { font-weight: $weight; }
+    @if $height { line-height: $height / $size; }
+
+}
+
+@mixin fzs($size, $height: false, $weight: false) {
+
+    $size: $size/2;
+    $height: $height/2;
+    font-size: #{$size}px;
+    @if $weight { font-weight: $weight; }
+    @if $height { line-height: $height / $size; }
+
+}
+
+
+// 04__letter-spacingをトラッキングの数値から計算
+// ----------------------------------------------------------
+@mixin letterSpacing($tracking) {
+    letter-spacing: #{$tracking / 1000}em;
+}
+
+
+// 05__gradation
+// ----------------------------------------------------------
+@mixin gradation($topColor, $bottomColor, $angle: to bottom) {
+    background: mix($topColor, $bottomColor, 50%); //開始色と終了色の中間の色を背景色に指定
+    background: linear-gradient($angle, $topColor, $bottomColor);
+}
+
+
+// 06__media query
+// ----------------------------------------------------------
+@mixin media($size, $px: false) {
+    @if ($size == 'sm') {
+        @media screen and (max-width: $breakPoint - 1) {
+            @content;
+        }
+    }
+    @else if ($size == 'lg') {
+        @media screen and (min-width: $breakPoint), print {
+            @content;
+        }
+    }
+    @else if ($size == 'HR') {
+        @media screen and (min-width: 1500px) {
+            @content;
+        }
+    }
+    @else if ($size == 'retina') {
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+            @content;
+        }
+    }
+
+    @if ($px) {
+        @if ($size == 'max-width') {
+            @media screen and (max-width: $px) {
+                @content;
+            }
+        }
+        @else if ($size == 'min-width') {
+            @media screen and (min-width: $px) {
+                @content;
+            }
+        }
+        @else if ($size == 'max-height') {
+            @media screen and (max-height: $px) {
+                @content;
+            }
+        }
+        @else if ($size == 'min-height') {
+            @media screen and (min-height: $px) {
+                @content;
+            }
+        }
+    }
+}
+
+
+// 07__くの字矢印
+// ----------------------------------------------------------
+@mixin arrow($width, $bold, $color, $deg) {
+    @include icon-ini;
+    border-style: solid;
+    border-width: 0 #{$bold}px #{$bold}px 0;
+    vertical-align: middle;
+    height: #{$width}px;
+    width: #{$width}px;
+    //色
+    @if      ( $color == "blc" ) { border-color: #000; }
+    @else if ( $color == "wh" )  { border-color: #fff; }
+    //角度
+    @if ( $deg == "left" )        { transform: rotate(135deg); }
+    @else if ( $deg == "top" )    { transform: rotate(225deg); }
+    @else if ( $deg == "right" )  { transform: rotate(-45deg); }
+    @else if ( $deg == "bottom" ) { transform: rotate(45deg);  }
+
+    @include ie11only() {
+        margin-bottom: 1px !important;
+    }
+}
+
+
+// 08__三角
+// ----------------------------------------------------------
+@mixin balloonArrow($width:10px, $height:5px, $color:#000, $position:bottom) {
+    position: relative;
+    @if ( $position == "top" ) {
+        &:after {
+            border-width: 0 #{$width/2}px #{$height}px #{$width/2}px;
+            border-color: transparent transparent $color transparent;
+            top         : -#{$height}px;
+            left        : calc( 50% - #{$width/2}px );
+        }
+    }
+    @else if ( $position == "right" ) {
+        &:after {
+            border-width: #{$width/2}px 0 #{$width/2}px #{$height}px;
+            border-color: transparent transparent transparent $color;
+            top         : calc( 50% - #{$width/2}px );
+            right       : -#{$height}px;
+        }
+    }
+    @else if ( $position == "bottom" ) {
+        &:after {
+            border-width: #{$height}px #{$width/2}px 0 #{$width/2}px;
+            border-color: $color transparent transparent transparent;
+            bottom      : -#{$height}px;
+            left        : calc( 50% - #{$width/2}px );
+        }
+    }
+    @else if ( $position == "left" ) {
+        &:after {
+            border-width: #{$width/2}px #{$height}px #{$width/2}px 0;
+            border-color: transparent $color transparent transparent;
+            top         : calc( 50% - #{$width/2}px );
+            left        : -#{$height}px;
+        }
+    }
+    &:after {
+        content: "";
+        border-style: solid;
+        display: inline-block;
+        height: 0;
+        position: absolute;
+        width: 0;
+    }
+}
+
+
+// 09__疑似要素初期化
+// ----------------------------------------------------------
+@mixin icon-ini {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+// 10__ホバーで透過
+// ----------------------------------------------------------
+@mixin hoverOpacity($opacity) {
+    transition: opacity $comMS $comES;
+    &:hover {
+        opacity: $opacity;
+    }
+}
+
+
+// 11__object-fit ie用Polyfill
+// ----------------------------------------------------------
+@mixin object-fit($fit: fill, $position: null){
+    -o-object-fit: $fit;
+    object-fit: $fit;
+    @if $position {
+        -o-object-position: $position;
+        object-position: $position;
+        font-family: 'object-fit: #{$fit}; object-position: #{$position}';
+    } @else {
+        font-family: 'object-fit: #{$fit}';
+    }
+}
+
+
+// 12__formスタイルリセット
+// ----------------------------------------------------------
+@mixin formReset() {
+    input, button, textarea, select {
+        margin: 0;
+        padding: 0;
+        background: none;
+        border: none;
+        border-radius: 0;
+        outline: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+    select::-ms-expand {
+        display: none;
+    }
+}
+
+
+// 13__ie11only
+// ----------------------------------------------------------
+@mixin ie11only {
+    @media all and (-ms-high-contrast:none),print {
+        @content;
+    }
+}
+
+@mixin ie11only_sm {
+    @media screen and (max-width: $breakPoint - 1) and (-ms-high-contrast:none) {
+        @content;
+    }
+}
+
+
+// 14__edgeonly
+// ----------------------------------------------------------
+@mixin edgeonly {
+    @supports (-ms-ime-align: auto) {
+        @content;
+    }
+}
+
+
+// 15__ffonly
+// ----------------------------------------------------------
+@mixin ffonly {
+    @-moz-document url-prefix(){
+        @content;
+    }
+}
+
+// 16__safarionly
+// ----------------------------------------------------------
+@mixin safarionly($className) {
+    _::-webkit-full-page-media, _:future, :root $className {
+        @content;
+    }
+}
+
+// 17__notfirst
+// ----------------------------------------------------------
+@mixin notfirst {
+    &:not(:first-of-type) {
+        @content;
+    }
+}
+
+// 18__last
+// ----------------------------------------------------------
+@mixin last {
+    &:last-of-type {
+        @content;
+    }
+}
+
+// 19__first
+// ----------------------------------------------------------
+@mixin first {
+    &:first-of-type {
+        @content;
+    }
+}
+
+
+// 20__expand
+// ----------------------------------------------------------
+@mixin expand($top, $right, $bottom, $left) {
+    margin: #{$top}px #{$right}px #{$bottom}px #{$left}px;
+}
+
+
+// 21__1.25倍
+// ----------------------------------------------------------
+@mixin expansion($verticale, $horizontal) {
+    transform: scale(1.25);
+    transform-origin: $verticale $horizontal;
+}
+
+
+// 22__placeholder
+// ----------------------------------------------------------
+@mixin placeholder {
+    &:placeholder-shown {
+        @content;
+    }
+    &::-webkit-input-placeholder {
+        @content;
+    }
+    &:-moz-placeholder {
+        @content;
+    }
+    &::-moz-placeholder {
+        @content;
+    }
+    &:-ms-input-placeholder {
+        @content;
+    }
+}
+
+
+// 23__picture100
+// ----------------------------------------------------------
+@mixin picture100 {
+    picture,
+    source,
+    img {
+        @include object-fit(cover);
+        height: 100%;
+        width: 100%;
+    }
+}

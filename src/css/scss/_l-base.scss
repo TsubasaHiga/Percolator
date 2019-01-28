@@ -1,0 +1,83 @@
+@charset "utf-8";
+
+html {
+    height: 100%;
+    &.is-nav--active {
+        overflow: hidden;
+    }
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    min-width: $bodyW;
+    position: relative;
+    @include media(sm) {
+        min-width: 320px;
+    }
+
+    // アンチエイリアス
+    // -webkit-font-smoothing: subpixel-antialiased;
+    // -moz-osx-font-smoothing: unset;
+    @media only screen and
+    (-webkit-min-device-pixel-ratio: 2),(min-resolution: 2dppx) {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+.l-page {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    flex-wrap: wrap;
+    min-width: 0;
+    position: relative;
+    @include media(sm) {
+        overflow: hidden;
+    }
+}
+
+.l-content {
+    flex: 1 1 auto;
+    min-width: 0;
+    position: relative;
+    width: 100%;
+}
+
+.l-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    position: relative;
+    width: $mainW;
+    @include ie11only {
+        height: inherit !important;
+    }
+    @include edgeonly() {
+        height: inherit !important;
+    }
+
+    @include media(sm) {
+        padding: 0 $spSpace;
+        width: 100%;
+        .l-content > & {
+            // flex-direction: column; //IE11で詳細ページのmainの高さがバグった
+            flex-direction: column-reverse;
+            .l-main {
+                width: 100%;
+                &.has-side {
+                    width: 100%;
+                }
+            }
+            .l-side {
+                margin: 15px 0 0;
+                width: 100%;
+            }
+        }
+    }
+}
+
+.l-lg { @include media(sm) { display: none !important; } }
+.l-sm { @include media(lg) { display: none !important; } }

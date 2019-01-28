@@ -1,0 +1,128 @@
+@charset "utf-8";
+
+// footer
+// ----------------------------------------------------------
+.l-footer {
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+    &__inner {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+        width: $mainW;
+    }
+
+    @include media(sm) {
+        margin-top: 50px;
+        &__inner {
+            flex-direction: column;
+            padding: 0 $spSpace;
+            width: 100%;
+        }
+    }
+
+    // フッターナビ
+    &__nav {
+        $nav: &;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        height: 100px;
+        &--list {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
+        &--item {
+            height: 100%;
+            width: 100px;
+            &.js-accordion {
+                > ul {
+                    display: none;
+                }
+            }
+        }
+        &--link {
+            align-items: center;
+            color: $color--text;
+            display: inline-flex;
+            justify-content: center;
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+
+        @include media(sm) {
+            height: 100%;
+            width: 100%;
+            &--list {
+                flex-direction: column;
+                width: 100%;
+            }
+            &--item {
+                width: 100%;
+                @include notfirst {
+                    border-top: 1px solid $color--border;
+                }
+
+                // アコーディオン
+                &.js-accordion {
+                    > #{$nav}--link {
+                        cursor: pointer;
+                        user-select: none;
+                        &:before,
+                        &:after {
+                            $width: 10px;
+                            @include icon-ini;
+                            background-color: #000;
+                            position: absolute;
+                            right: 0;
+                            top: calc(50% - #{$width/2}/2 );
+                            transition: all $comMS $comES;
+                            will-change: transform;
+                            height: 2px;
+                            width: $width;
+                        }
+                        &:after {
+                            transform: rotate(90deg);
+                        }
+                    }
+                    > ul {
+                        background-color: #eee;
+                        display: none;
+                        padding-left: $spSpace;
+                        transition: all $comMS $comES;
+                    }
+                    &.is-open {
+                        > #{$nav}--link {
+                            &:after {
+                                transform: rotate(0deg);
+                            }
+                        }
+                        > ul {
+                            animation: show $comMS $comES 0s;
+                            display: block;
+                        }
+                    }
+                }
+            }
+            &--link {
+                justify-content: flex-start;
+                padding: 10px 0;
+            }
+        }
+    }
+
+    // コピーライト
+    &__copyright {
+        @include fz(10, 10, 400);
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        height: 50px;
+    }
+}

@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+// パンくず
+// ----------------------------------------------------------
+.l-breadcrumbs {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    &__inner {
+        align-items: center;
+        display: flex;
+        width: $mainW;
+
+        > span {
+            align-items: center;
+            display: flex;
+            @include notfirst {
+                margin-left: 10px;
+                &:before {
+                    @include arrow(5, 1, blc, right);
+                    margin-right: 12px;
+                }
+            }
+            @include last {
+                a {
+                    pointer-events: none;
+                }
+            }
+        }
+        a {
+            color: $color--text;
+        }
+    }
+
+    @include media(sm) {
+        &__inner {
+            padding: 0 $spSpace;
+        }
+    }
+}
