@@ -35,7 +35,7 @@ const webpackConfig = require("./webpack.config");
 // BrowserSyncの設定
 const browsersync = {
     browser : 'google chrome',
-    proxy   : 'https://localhost/fe_template_html5/dist',
+    proxy   : 'https://localhost/fe_html5-template/dist',
     open    : 'local',
     sslkey  : '/Applications/MAMP/conf/apache/ssl/localhost.key',
     sslcrt  : '/Applications/MAMP/conf/apache/ssl/localhost.crt',

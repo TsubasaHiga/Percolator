@@ -9,7 +9,7 @@ PHPで構築された一般的な静的サイト構築に最適なHTML5標準対
 リポジトリよりクローンを行い、`npm -i`をして頂くだけで準備が整います。
 
 ```bash
-$ git clone https://github.com/TsubasaHiga/fe_template_html5.git
+$ git clone https://github.com/TsubasaHiga/fe_html5-template.git
 $ npm i
 ```
 
