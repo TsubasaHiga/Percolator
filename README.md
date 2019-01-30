@@ -13,7 +13,7 @@ $ git clone https://github.com/TsubasaHiga/fe_html5-template.git
 $ npm i
 ```
 
-gulp起動は`npx gulp`で可能です。標準で`browser-sync`を導入済み。
+gulp起動は`npx gulp`で可能です。標準で`browser-sync`導入済み。
 
 ```bash
 $ npx gulp
@@ -62,9 +62,12 @@ $ npx gulp
 
 ## Code Standard
 
-デフォルトは[PSR-2](https://www.php-fig.org/psr/psr-2/)です。
+[PSR-2](https://www.php-fig.org/psr/psr-2/)に準拠。ただし以下Sniffに関しては除外しております。
 
-## Browser support
+### PSR-2 Exclude List
+- Generic.Files.LineLength
+
+## Browser Support
 
 サポートしているブラウザは以下の通りです。基本的にはモダンブラウザの内（[> 0.5% in JP](https://browserl.ist/?q=%3E+0.5%25+in+JP)）に該当するブラウザをデフォルト対応と致します。
 
