@@ -3,6 +3,7 @@
 // layout
 // ----------------------------------------------------------
 $breakPoint    : 768px;
+$breakPointHR  : 1500px;
 $bodyW         : 1280px;
 $mainW         : 1280px;
 $headerH       : 80px;
@@ -14,34 +15,12 @@ $spSpace       : 20px;
 
 // font
 // ----------------------------------------------------------
-@font-face {
-  font-family: "Yu Gothic";
-  src: local("Yu Gothic Medium");
-  font-weight: 100;
-}
-@font-face {
-  font-family: "Yu Gothic";
-  src: local("Yu Gothic Medium");
-  font-weight: 200;
-}
-@font-face {
-  font-family: "Yu Gothic";
-  src: local("Yu Gothic Medium");
-  font-weight: 300;
-}
-@font-face {
-  font-family: "Yu Gothic";
-  src: local("Yu Gothic Medium");
-  font-weight: 400;
-}
-@font-face {
-  font-family: "Yu Gothic";
-  src: local("Yu Gothic Bold");
-  font-weight: 600;
-}
-$fontFamily    : 'yakuhanjp', 'Yu Gothic Medium', '游ゴシック Medium', YuGothic, '游ゴシック体', 'ヒラギノ角ゴ Pro W3', 'メイリオ', sans-serif;
-$fontSpFamily  : 'yakuhanjp', 'Hiragino Kaku Gothic ProN', Meiryo, メイリオ, sans-serif;
+$font--gothic: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
 $fontRobotoCond: 'Roboto Condensed', sans-serif;
+
+$fontFamily    : 'yakuhanjp', $font--gothic;
+$fontSpFamily  : 'yakuhanjp', $font--gothic;
+
 $fontSize      : 14px;
 $lineHeight    : (24/14);
 
