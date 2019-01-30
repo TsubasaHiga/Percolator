@@ -63,7 +63,6 @@ body {
         padding: 0 $spSpace;
         width: 100%;
         .l-content > & {
-            // flex-direction: column; //IE11で詳細ページのmainの高さがバグった
             flex-direction: column-reverse;
             .l-main {
                 width: 100%;

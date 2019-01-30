@@ -18,13 +18,12 @@
 // 14. edgeonly
 // 15. ffonly
 // 16. safarionly
-// 17. notfirst
-// 18. last
-// 19. first
-// 20. expand
-// 21. 1.25倍
-// 22. placeholder
-// 23. picture100
+// 17. first, notfirst
+// 18. last, notlast
+// 19. expand
+// 20. 1.25倍
+// 21. placeholder
+// 22. picture100
 // ----------------------------------------------------------
 
 
@@ -61,7 +60,6 @@
     @if $height { line-height: $height / $size; }
 
 }
-
 @mixin fzs($size, $height: false, $weight: false) {
 
     $size: $size/2;
@@ -102,7 +100,7 @@
         }
     }
     @else if ($size == 'HR') {
-        @media screen and (min-width: 1500px) {
+        @media screen and (min-width: $breakPointHR) {
             @content;
         }
     }
@@ -272,9 +270,13 @@
         @content;
     }
 }
-
 @mixin ie11only_sm {
     @media screen and (max-width: $breakPoint - 1) and (-ms-high-contrast:none) {
+        @content;
+    }
+}
+@mixin ie11only_lg {
+    @media screen and (min-width: $breakPoint) and (-ms-high-contrast:none) {
         @content;
     }
 }
@@ -297,6 +299,7 @@
     }
 }
 
+
 // 16__safarionly
 // ----------------------------------------------------------
 @mixin safarionly($className) {
@@ -305,39 +308,43 @@
     }
 }
 
-// 17__notfirst
-// ----------------------------------------------------------
-@mixin notfirst {
-    &:not(:first-of-type) {
-        @content;
-    }
-}
 
-// 18__last
-// ----------------------------------------------------------
-@mixin last {
-    &:last-of-type {
-        @content;
-    }
-}
-
-// 19__first
+// 17__first, notfirst
 // ----------------------------------------------------------
 @mixin first {
     &:first-of-type {
         @content;
     }
 }
+@mixin notfirst {
+    &:not(:first-of-type) {
+        @content;
+    }
+}
 
 
-// 20__expand
+// 18__last, notlast
+// ----------------------------------------------------------
+@mixin last {
+    &:last-of-type {
+        @content;
+    }
+}
+@mixin notlast {
+    &:not(:last-of-type) {
+        @content;
+    }
+}
+
+
+// 19__expand
 // ----------------------------------------------------------
 @mixin expand($top, $right, $bottom, $left) {
     margin: #{$top}px #{$right}px #{$bottom}px #{$left}px;
 }
 
 
-// 21__1.25倍
+// 20__1.25倍
 // ----------------------------------------------------------
 @mixin expansion($verticale, $horizontal) {
     transform: scale(1.25);
@@ -345,7 +352,7 @@
 }
 
 
-// 22__placeholder
+// 21__placeholder
 // ----------------------------------------------------------
 @mixin placeholder {
     &:placeholder-shown {
@@ -366,7 +373,7 @@
 }
 
 
-// 23__picture100
+// 22__picture100
 // ----------------------------------------------------------
 @mixin picture100 {
     picture,
