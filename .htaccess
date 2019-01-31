@@ -29,8 +29,8 @@ AddType application/x-httpd-php .html .php
 </IfModule>
 
 
-# mod_deflate
-# ------------------------------------------------------
+# # mod_deflate
+# # ------------------------------------------------------
 # <ifModule mod_deflate.c>
 #   <IfModule mod_filter.c>
 #   AddOutputFilterByType DEFLATE text/html text/xml text/css text/plain
@@ -44,8 +44,8 @@ AddType application/x-httpd-php .html .php
 # </ifModule>
 
 
-# mod_expires
-# ------------------------------------------------------
+# # mod_expires
+# # ------------------------------------------------------
 # <IfModule mod_expires.c>
 # ExpiresActive on
 # ExpiresDefault                                      "access plus 1 month"
