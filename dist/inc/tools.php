@@ -79,3 +79,60 @@ EOM;
 
     return $html;
 }
+
+
+/** ------------------------------------------------------------
+*
+* SNSシェアリンク生成
+*
+* @param string $title タイトルを指定します
+* @param string $pageurl ページURLを指定します
+* @param string $kind SNSの種類を指定します
+* @param string $class aタグに指定するクラス名を指定します
+* @return string $kindで指定したSNSのシェアリンク`<a>`タグを返します
+*
+* -------------------------------------------------------------
+*/
+function c_genSnsBtn($title, $pageurl, $kind, $class)
+{
+    $title    = rawurlencode($title);
+    $pageurl  = rawurlencode($pageurl);
+    $FB_APPID = FB_APPID;
+
+    switch ($kind) {
+        case 'TW':
+            $html = <<< EOM
+            <a class="{$class}" href="https://www.facebook.com/dialog/share?text={$title};url={$pageurl}" target="_blank" aria-label="twitter">twitter</a>
+EOM;
+            return $html;
+            break;
+
+        case 'FB':
+            $html = <<< EOM
+            <a class="{$class}" href="https://www.facebook.com/dialog/share?app_id={$FB_APPID}&display=popup&href={$pageurl}&redirect_uri={$pageurl}" target="_blank" aria-label="facebook">facebook</a>
+EOM;
+            return $html;
+            break;
+
+        case 'HB':
+            $html = <<< EOM
+            <a class="{$class}" href="http://b.hatena.ne.jp/add?mode=confirm&url={$pageurl}" target="_blank" aria-label="hatena">hatena</a>
+EOM;
+            return $html;
+            break;
+
+        case 'LN':
+            $html = <<< EOM
+            <a class="{$class}" href="http://line.me/R/msg/text/?{$title};url={$pageurl}" target="_blank" aria-label="line">line</a>
+EOM;
+            return $html;
+            break;
+
+        case 'PK':
+            $html = <<< EOM
+            <a class="{$class}" href="http://getpocket.com/edit?url={$title};url={$pageurl}" target="_blank" aria-label="pocket">pocket</a>
+EOM;
+            return $html;
+            break;
+    }
+}
