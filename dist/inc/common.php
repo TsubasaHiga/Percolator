@@ -8,7 +8,7 @@ require_once(dirname(__FILE__) . '/define-site.php');
 require_once(dirname(__FILE__) . '/tools.php');
 
 
-// 本番環境用
+// 開発環境用
 if (APPLICATION_ENV !== 'production') {
     // PHPエラーを表示する
     ini_set('display_errors', 1);
