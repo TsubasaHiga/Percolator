@@ -4,47 +4,16 @@
 *
 * module import
 *
-* @url InstantClick        http://instantclick.io/
-* @url objectFitImages     https://github.com/bfred-it/object-fit-images
-* @url lazysizes           https://github.com/aFarkas/lazysizes
-* @url throttle-debounce   https://www.npmjs.com/package/throttle-debounce
-* @url swiper              https://www.npmjs.com/package/swiper
-*
 * -------------------------------------------------------------*/
 import InstantClick from "instantclick";
 import objectFitImages from "object-fit-images";
 import lazysizes from "lazysizes";
 import { throttle, debounce } from 'throttle-debounce';
 import Swiper from 'swiper';
+import { define, el } from "./define";
 
 InstantClick.init();
 objectFitImages();
-
-
-
-
-
-/** ------------------------------------------------------------
-*
-* 変数
-*
-* @description 変数及び基本要素の指定を行います
-*
-* -------------------------------------------------------------*/
-//const $ = require('jquery');
-const breakpoint = 767;
-const el = {
-    html        : document.getElementsByTagName('html')[0],
-    body        : document.getElementsByTagName('body')[0],
-    header      : document.getElementsByTagName('header')[0],
-    page        : document.getElementsByClassName('.l-page'),
-    headerLogo  : document.getElementsByClassName('.l-header__logo'),
-    nav         : document.getElementsByClassName('.l-nav'),
-    content     : document.getElementsByClassName('.l-content'),
-    main        : document.getElementsByClassName('.l-main'),
-    footer      : document.getElementsByClassName('.l-footer'),
-    footerNavLi : document.getElementsByClassName('.l-footer__nav--item')
-};
 
 
 
@@ -94,7 +63,7 @@ window.addEventListener('resize', debounce(300, function() {
 * -------------------------------------------------------------*/
 function get_deviceType() {
     let windowWidth = window.innerWidth;
-    let deviceType  = ( windowWidth > breakpoint ) ? 'lg' : 'sm';
+    let deviceType  = ( windowWidth > define.breakpoint ) ? 'lg' : 'sm';
     console.log(deviceType);
     return deviceType;
 }
