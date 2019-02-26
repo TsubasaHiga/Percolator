@@ -4,29 +4,21 @@
 *
 * 初期設定（プラグイン読み込み、webpack設定、変数、入出力設定など）
 *
-* @description
-    実行手順
-    $ npm init -y
-    $ npm i -D gulp gulp-plumber gulp-changed del browser-sync webpack webpack-stream gulp-sass gulp-autoprefixer gulp-imagemin imagemin-pngquant imagemin-mozjpeg
-    $ npx gulp
-    アンインストール
-    $ npm uninstall -D package name
-*
 * -------------------------------------------------------------*/
 
 // Load plugins
-const autoprefixer      = require('gulp-autoprefixer');           //autoprefixer
-const browserSync       = require('browser-sync').create();       //browser-sync
-const css               = require('gulp-sass');                   //gulp-sass
-const changed           = require('gulp-changed');                //ファイル変更検知
-const del               = require("del");                         //ファイル削除
-const gulp              = require("gulp");                        //gulp
-const imagemin          = require('gulp-imagemin');               //imagemin
-const mozjpeg           = require('imagemin-mozjpeg');            //mozjpeg
-const plumber           = require('gulp-plumber');                //エラーによる強制停止を回避
-const pngquant          = require('imagemin-pngquant');           //pngquant
-const webpack           = require("webpack");                     //webpack
-const webpackStream     = require("webpack-stream");              //webpack-stream
+const autoprefixer  = require('gulp-autoprefixer');
+const browserSync   = require('browser-sync').create();
+const css           = require('gulp-sass');
+const changed       = require('gulp-changed');
+const del           = require("del");
+const gulp          = require("gulp");
+const imagemin      = require('gulp-imagemin');
+const mozjpeg       = require('imagemin-mozjpeg');
+const plumber       = require('gulp-plumber');
+const pngquant      = require('imagemin-pngquant');
+const webpack       = require("webpack");
+const webpackStream = require("webpack-stream");
 
 
 // webpackの設定ファイルの読み込み
@@ -102,7 +94,12 @@ gulp.task('clean', () => {
 gulp.task('css', () => {
     return gulp
         .src(input.css + '**/*.scss')
-        .pipe(plumber())
+        .pipe(plumber({
+            errorHandler: function(err) {
+                console.log(err.messageFormatted);
+                this.emit('end');
+            }
+        }))
         .pipe(css({
             precision  : 5,
             outputStyle: 'compressed'
