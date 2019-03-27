@@ -17,6 +17,7 @@ const imagemin      = require('gulp-imagemin');
 const mozjpeg       = require('imagemin-mozjpeg');
 const plumber       = require('gulp-plumber');
 const pngquant      = require('imagemin-pngquant');
+const sourcemaps    = require('gulp-sourcemaps');
 const webpack       = require("webpack");
 const webpackStream = require("webpack-stream");
 
@@ -107,6 +108,7 @@ gulp.task('css', () => {
         .pipe(autoprefixer({
             browsers: ['> 0.5% in JP']
         }))
+        .pipe(sourcemaps.write('./maps'))
         .pipe(gulp.dest(output.css))
         .pipe(browserSync.stream());
 });
@@ -154,5 +156,5 @@ gulp.task('watch', () => {
 })
 
 // default task
-//gulp.task('default', gulp.series('watch'));
-gulp.task('default', gulp.parallel('watch', 'sync'));
+gulp.task('default', gulp.series('watch'));
+// gulp.task('default', gulp.parallel('watch', 'sync'));
