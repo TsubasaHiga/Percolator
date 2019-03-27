@@ -11,9 +11,12 @@ const webpack = require('webpack');
 const config  = {
     watch   : true,
     mode    : "development",
-    entry   : "./src/js/main.js",
+    entry   : {
+        'bundle' : './src/js/main.js',
+    },
     output  : {
-        filename: "bundle.js"
+        path: __dirname,
+        filename: '[name].js',
     },
     module: {
         rules: [
