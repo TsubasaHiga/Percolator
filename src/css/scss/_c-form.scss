@@ -10,47 +10,41 @@
 // input
 // ----------------------------------------------------------
 .c-input {
-    @include media(sm) {
-    }
 }
 // Chromeでオートフィルした時にinputが黄色くなるのを回避
 input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 100px #fff inset !important;
+    -webkit-box-shadow: 0 0 0 100px $color--white inset !important;
 }
 
 // textarea
 // ----------------------------------------------------------
 .c-textarea {
-    @include media(sm) {
-    }
 }
 
 // placeholder
 // ----------------------------------------------------------
 :placeholder-shown {
-    color: #ccc;
-}
-::-webkit-input-placeholder {
-    color: #ccc;
-}
-:-moz-placeholder {
-    color: #ccc; opacity: 1;
-}
-::-moz-placeholder {
-    color: #ccc; opacity: 1;
-}
-:-ms-input-placeholder {
-    color: #ccc;
-}
-.c-select.is-empty {
-    color: #ccc;
+    color: $color--gray;
 }
 
-// other
-// ----------------------------------------------------------
-.c-required {
-    color: #c00;
+::-webkit-input-placeholder {
+    color: $color--gray;
 }
-.c-error {
-    color: #c00;
+
+:-moz-placeholder {
+    color: $color--gray;
+    opacity: 1;
+}
+
+::-moz-placeholder {
+    color: $color--gray;
+    opacity: 1;
+}
+
+:-ms-input-placeholder {
+    color: $color--gray;
+}
+
+.c-select.is-empty {
+    color: $color--gray;
 }

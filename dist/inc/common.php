@@ -1,11 +1,10 @@
 <?php
-// テスト環境か本番環境かを設定するファイルを読み込む
-require_once(dirname(__FILE__) . '/common-env.php');
-// 設定値を読み込む
-require_once(dirname(__FILE__) . '/define-protocol.php');
-require_once(dirname(__FILE__) . '/define-site.php');
-// toolsを読み込む
-require_once(dirname(__FILE__) . '/tools.php');
+require_once dirname(__FILE__) . '/define-protocol.php';
+require_once dirname(__FILE__) . '/define-site.php';
+// 開発環境か本番環境かを設定するファイルを読み込む.
+require_once dirname(__FILE__) . '/common-env.php';
+// toolsを読み込む.
+require_once dirname(__FILE__) . '/tools.php';
 
 
 // 開発環境用

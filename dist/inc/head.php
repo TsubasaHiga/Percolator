@@ -1,9 +1,4 @@
 <?php
-// ---------------------------------------
-// head要素読み込み
-// 2018/12/13 HigaTsubasa
-// ---------------------------------------
-
 //$PAGENAMEでcanonicalとogptypeの出力を変える
 global $PAGENAME;
 $PAGENAME === 'top' ? $ogtype = 'website' : $ogtype = 'article';
@@ -34,21 +29,18 @@ $PAGENAME === 'top' ? $ogtype = 'website' : $ogtype = 'article';
     <title><?= $TITLE . '｜' . SITENAME; ?></title>
     <link rel="canonical" href="<?= PAGEURL; ?>">
     <link rel="shortcut icon" href="<?= SITEURL; ?>assets/images/favicon.ico">
-    <!--Include CSS Resources | preload-->
+    <!--preload-->
     <link rel="preload" as="style" href="<?= SITEURL; ?>assets/css/style.css">
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700">
-    <!--Include CSS Resources | normalload-->
-    <link rel="stylesheet" href="<?= SITEURL; ?>assets/css/style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700">
-    <!--Include JavaScript Resources | preload-->
     <link rel="preload" as="script" href="<?= SITEURL; ?>assets/js/bundle.js">
+    <!--load-->
+    <link rel="stylesheet" href="<?= SITEURL; ?>assets/css/style.css">
     <?php
-    include_once(HTTP_PATH . '/analytics-head.php');
+    require_once HTTP_PATH . '/analytics-head.php';
     ?>
 </head>
 
 <body class="<?= $PAGENAME; ?>" id="top">
     <?php
-    include_once(HTTP_PATH . '/analytics-body.php');
-    include_once(HTTP_PATH . '/parts-header.php');
+    require_once HTTP_PATH . '/analytics-body.php';
+    require_once HTTP_PATH . '/parts-header.php';
     ?>

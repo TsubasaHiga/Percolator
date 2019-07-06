@@ -26,7 +26,6 @@
 // 22. picture100
 // ----------------------------------------------------------
 
-
 // 01__画像置換
 // ----------------------------------------------------------
 @mixin hideText() {
@@ -36,7 +35,6 @@
     text-shadow: none;
 }
 
-
 // 02__テキスト省略
 // ----------------------------------------------------------
 @mixin ellipsis() {
@@ -44,32 +42,41 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
 @mixin notEllipsis() {
     overflow: inherit;
     text-overflow: inherit;
     white-space: inherit;
 }
 
-
 // 03__フォントサイズとラインハイトまとめて指定
 // ----------------------------------------------------------
 @mixin fz($size, $height: false, $weight: false) {
-
     font-size: #{$size}px;
-    @if $weight { font-weight: $weight; }
-    @if $height { line-height: $height / $size; }
 
+    @if $weight {
+        font-weight: $weight;
+    }
+
+    @if $height {
+        line-height: $height / $size;
+    }
 }
-@mixin fzs($size, $height: false, $weight: false) {
 
+@mixin fzs($size, $height: false, $weight: false) {
     $size: $size/2;
     $height: $height/2;
+
     font-size: #{$size}px;
-    @if $weight { font-weight: $weight; }
-    @if $height { line-height: $height / $size; }
 
+    @if $weight {
+        font-weight: $weight;
+    }
+
+    @if $height {
+        line-height: $height / $size;
+    }
 }
-
 
 // 04__letter-spacingをトラッキングの数値から計算
 // ----------------------------------------------------------
@@ -77,14 +84,17 @@
     letter-spacing: #{$tracking / 1000}em;
 }
 
-
 // 05__gradation
 // ----------------------------------------------------------
 @mixin gradation($topColor, $bottomColor, $angle: to bottom) {
-    background: mix($topColor, $bottomColor, 50%); //開始色と終了色の中間の色を背景色に指定
+    background: mix(
+        $topColor,
+        $bottomColor,
+        50%
+    ); //開始色と終了色の中間の色を背景色に指定
+
     background: linear-gradient($angle, $topColor, $bottomColor);
 }
-
 
 // 06__media query
 // ----------------------------------------------------------
@@ -94,17 +104,20 @@
             @content;
         }
     }
-    @else if ($size == 'lg') {
+
+ @else if ($size == 'lg') {
         @media screen and (min-width: $breakPoint), print {
             @content;
         }
     }
-    @else if ($size == 'HR') {
+
+ @else if ($size == 'HR') {
         @media screen and (min-width: $breakPointHR) {
             @content;
         }
     }
-    @else if ($size == 'retina') {
+
+ @else if ($size == 'retina') {
         @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
             @content;
         }
@@ -116,17 +129,20 @@
                 @content;
             }
         }
-        @else if ($size == 'min-width') {
+
+ @else if ($size == 'min-width') {
             @media screen and (min-width: $px) {
                 @content;
             }
         }
-        @else if ($size == 'max-height') {
+
+ @else if ($size == 'max-height') {
             @media screen and (max-height: $px) {
                 @content;
             }
         }
-        @else if ($size == 'min-height') {
+
+ @else if ($size == 'min-height') {
             @media screen and (min-height: $px) {
                 @content;
             }
@@ -134,70 +150,88 @@
     }
 }
 
-
 // 07__くの字矢印
 // ----------------------------------------------------------
 @mixin arrow($width, $bold, $color, $deg) {
     @include icon-ini;
+
+    border-color: $color;
     border-style: solid;
     border-width: 0 #{$bold}px #{$bold}px 0;
-    vertical-align: middle;
     height: #{$width}px;
+    vertical-align: middle;
     width: #{$width}px;
-    //色
-    @if      ( $color == "blc" ) { border-color: #000; }
-    @else if ( $color == "wh" )  { border-color: #fff; }
     //角度
-    @if ( $deg == "left" )        { transform: rotate(135deg); }
-    @else if ( $deg == "top" )    { transform: rotate(225deg); }
-    @else if ( $deg == "right" )  { transform: rotate(-45deg); }
-    @else if ( $deg == "bottom" ) { transform: rotate(45deg);  }
+    @if ($deg == 'left') {
+        transform: rotate(135deg);
+    }
+
+ @else if ($deg == 'top') {
+        transform: rotate(225deg);
+    }
+
+ @else if ($deg == 'right') {
+        transform: rotate(-45deg);
+    }
+
+ @else if ($deg == 'bottom') {
+        transform: rotate(45deg);
+    }
 
     @include ie11only() {
         margin-bottom: 1px !important;
     }
 }
 
-
 // 08__三角
 // ----------------------------------------------------------
-@mixin balloonArrow($width:10px, $height:5px, $color:#000, $position:bottom) {
+@mixin balloonArrow(
+    $width: 10px,
+    $height: 5px,
+    $color: #000,
+    $position: bottom
+) {
     position: relative;
-    @if ( $position == "top" ) {
+
+    @if ($position == 'top') {
         &:after {
-            border-width: 0 #{$width/2}px #{$height}px #{$width/2}px;
             border-color: transparent transparent $color transparent;
-            top         : -#{$height}px;
-            left        : calc( 50% - #{$width/2}px );
+            border-width: 0 #{$width/2}px #{$height}px #{$width/2}px;
+            left: calc(50% - #{$width/2}px);
+            top: -#{$height}px;
         }
     }
-    @else if ( $position == "right" ) {
+
+ @else if ($position == 'right') {
         &:after {
-            border-width: #{$width/2}px 0 #{$width/2}px #{$height}px;
             border-color: transparent transparent transparent $color;
-            top         : calc( 50% - #{$width/2}px );
-            right       : -#{$height}px;
+            border-width: #{$width/2}px 0 #{$width/2}px #{$height}px;
+            right: -#{$height}px;
+            top: calc(50% - #{$width/2}px);
         }
     }
-    @else if ( $position == "bottom" ) {
+
+ @else if ($position == 'bottom') {
         &:after {
-            border-width: #{$height}px #{$width/2}px 0 #{$width/2}px;
             border-color: $color transparent transparent transparent;
-            bottom      : -#{$height}px;
-            left        : calc( 50% - #{$width/2}px );
+            border-width: #{$height}px #{$width/2}px 0 #{$width/2}px;
+            bottom: -#{$height}px;
+            left: calc(50% - #{$width/2}px);
         }
     }
-    @else if ( $position == "left" ) {
+
+ @else if ($position == 'left') {
         &:after {
-            border-width: #{$width/2}px #{$height}px #{$width/2}px 0;
             border-color: transparent $color transparent transparent;
-            top         : calc( 50% - #{$width/2}px );
-            left        : -#{$height}px;
+            border-width: #{$width/2}px #{$height}px #{$width/2}px 0;
+            left: -#{$height}px;
+            top: calc(50% - #{$width/2}px);
         }
     }
+
     &:after {
-        content: "";
         border-style: solid;
+        content: '';
         display: inline-block;
         height: 0;
         position: absolute;
@@ -205,82 +239,82 @@
     }
 }
 
-
 // 09__疑似要素初期化
 // ----------------------------------------------------------
 @mixin icon-ini {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    content: "";
+    content: '';
     display: inline-block;
-    vertical-align: middle;
 }
-
 
 // 10__ホバーで透過
 // ----------------------------------------------------------
 @mixin hoverOpacity($opacity) {
     transition: opacity $comMS $comES;
+
     &:hover {
         opacity: $opacity;
     }
 }
 
-
 // 11__object-fit ie用Polyfill
 // ----------------------------------------------------------
-@mixin object-fit($fit: fill, $position: null){
+@mixin object-fit($fit: fill, $position: null) {
     -o-object-fit: $fit;
     object-fit: $fit;
+
     @if $position {
         -o-object-position: $position;
         object-position: $position;
         font-family: 'object-fit: #{$fit}; object-position: #{$position}';
-    } @else {
+    }
+
+ @else {
         font-family: 'object-fit: #{$fit}';
     }
 }
 
-
 // 12__formスタイルリセット
 // ----------------------------------------------------------
 @mixin formReset() {
-    input, button, textarea, select {
-        margin: 0;
-        padding: 0;
-        background: none;
-        border: none;
-        border-radius: 0;
-        outline: none;
+    input,
+    button,
+    textarea,
+    select {
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
+        background: none;
+        border: none;
+        border-radius: 0;
+        margin: 0;
+        outline: none;
+        padding: 0;
     }
+
     select::-ms-expand {
         display: none;
     }
 }
 
-
 // 13__ie11only
 // ----------------------------------------------------------
 @mixin ie11only {
-    @media all and (-ms-high-contrast:none),print {
-        @content;
-    }
-}
-@mixin ie11only_sm {
-    @media screen and (max-width: $breakPoint - 1) and (-ms-high-contrast:none) {
-        @content;
-    }
-}
-@mixin ie11only_lg {
-    @media screen and (min-width: $breakPoint) and (-ms-high-contrast:none) {
+    @media all and (-ms-high-contrast: none), print {
         @content;
     }
 }
 
+@mixin ie11only_sm {
+    @media screen and (max-width: $breakPoint - 1) and (-ms-high-contrast: none) {
+        @content;
+    }
+}
+
+@mixin ie11only_lg {
+    @media screen and (min-width: $breakPoint) and (-ms-high-contrast: none) {
+        @content;
+    }
+}
 
 // 14__edgeonly
 // ----------------------------------------------------------
@@ -290,24 +324,23 @@
     }
 }
 
-
 // 15__ffonly
 // ----------------------------------------------------------
 @mixin ffonly {
-    @-moz-document url-prefix(){
+    @-moz-document url-prefix() {
         @content;
     }
 }
-
 
 // 16__safarionly
 // ----------------------------------------------------------
 @mixin safarionly($className) {
-    _::-webkit-full-page-media, _:future, :root $className {
+    _::-webkit-full-page-media,
+    _:future,
+    :root $className {
         @content;
     }
 }
-
 
 // 17__first, notfirst
 // ----------------------------------------------------------
@@ -316,12 +349,12 @@
         @content;
     }
 }
+
 @mixin notfirst {
     &:not(:first-of-type) {
         @content;
     }
 }
-
 
 // 18__last, notlast
 // ----------------------------------------------------------
@@ -330,19 +363,18 @@
         @content;
     }
 }
+
 @mixin notlast {
     &:not(:last-of-type) {
         @content;
     }
 }
 
-
 // 19__expand
 // ----------------------------------------------------------
 @mixin expand($top, $right, $bottom, $left) {
     margin: #{$top}px #{$right}px #{$bottom}px #{$left}px;
 }
-
 
 // 20__1.25倍
 // ----------------------------------------------------------
@@ -351,27 +383,29 @@
     transform-origin: $verticale $horizontal;
 }
 
-
 // 21__placeholder
 // ----------------------------------------------------------
 @mixin placeholder {
     &:placeholder-shown {
         @content;
     }
+
     &::-webkit-input-placeholder {
         @content;
     }
+
     &:-moz-placeholder {
         @content;
     }
+
     &::-moz-placeholder {
         @content;
     }
+
     &:-ms-input-placeholder {
         @content;
     }
 }
-
 
 // 22__picture100
 // ----------------------------------------------------------
@@ -380,6 +414,7 @@
     source,
     img {
         @include object-fit(cover);
+
         height: 100%;
         width: 100%;
     }

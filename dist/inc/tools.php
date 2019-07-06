@@ -136,3 +136,29 @@ EOM;
             break;
     }
 }
+
+
+/**
+ * Array sanitization.
+ *
+ * @description Both the array key and the value are sanitized.
+ * @param array $inputs .
+ */
+function _h($inputs)
+{
+    if (is_array($inputs)) {
+        $_input = array();
+        foreach ($inputs as $key => $val) {
+            if (is_array($val)) {
+                $key            = htmlspecialchars($key, ENT_QUOTES, 'UTF-8');
+                $_input[ $key ] = _h($val);
+            } else {
+                $key            = htmlspecialchars($key, ENT_QUOTES, 'UTF-8');
+                $_input[ $key ] = htmlspecialchars($val, ENT_QUOTES, 'UTF-8');
+            }
+        }
+        return $_input;
+    } else {
+        return htmlspecialchars($inputs, ENT_QUOTES, 'UTF-8');
+    }
+}

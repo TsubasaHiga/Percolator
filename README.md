@@ -1,12 +1,12 @@
-# html5-template
+# Percolator
 
-![facebook_cover_photo_2](https://user-images.githubusercontent.com/33184716/51615853-2f2e4000-1f6c-11e9-853d-35bdd1882004.png)
+![Percolator](https://user-images.githubusercontent.com/33184716/60753002-d0cfb800-a007-11e9-9d8a-571cab411659.png)
 
 PHPで構築された一般的な静的サイト構築に最適なHTML5標準対応の初期構築テンプレートです。なるべくモダンな仕様で低コスト開発出来るよう定期的にアップデートしております。スモールスタート・LP開発・小規模静的サイトとの相性が高いです。
 
 ## Install & Use
 
-リポジトリよりクローンを行い、`npm -i`をして頂くだけで準備が整います。
+リポジトリよりクローンを行い、`npm i`をして頂くだけで準備が整います。
 
 ```bash
 $ git clone https://github.com/TsubasaHiga/fe_html5-template.git
@@ -71,28 +71,16 @@ $ npx gulp
 
 サポートしているブラウザは以下の通りです。基本的にはモダンブラウザの内（[> 0.5% in JP](https://browserl.ist/?q=%3E+0.5%25+in+JP)）に該当するブラウザをデフォルト対応と致します。
 
-### PC
-
-- Chrome
-- Edge
-- Firefox
-- IE11
-- Safari - macOS
-
-### Mobile
-
-- Chrome - Android
-- Safari - iOS
-
 ## History
 
 プロジェクト管理の履歴を残しておきます。
 
-|             Deta              | Detail                                                       | Public or Private | Repository                                                   |
-| :---------------------------: | ------------------------------------------------------------ | ----------------- | ------------------------------------------------------------ |
-|        2019.01.28<br>-        | パブリック版として開発開始。コミットログを持たない様最新ファイルのみインポートしたリポジトリを別途用意。 | Public            | https://github.com/TsubasaHiga/fe_html5-template             |
-| 2019.01.22<br>-<br>2019.01.28 | 正式にhtml5テンプレートとして開発開始する為別途リポジトリ用意。凍結。 | Private           | https://github.com/TsubasaHiga/fe_template_html5             |
-| 2018.04.25<br>-<br>2019.01.22 | 社内Fork版として開発開始。各種テンプレート管理リポジトリの1つとして管理。 | Private           | https://github.com/TsubasaHiga/fe_template/tree/master/html5 |
+| Deta | Detail | Public or Private | Repository |
+| :---: | --- | --- | --- |
+| 2019.07.06<br> | リポジトリ名を正式名称に変更 | Public | https://github.com/TsubasaHiga/Percolator |
+| 2019.01.28<br>-<br>2019.07.06 | パブリック版として開発開始。コミットログを持たない様最新ファイルのみインポートしたリポジトリを別途用意。 | Public | https://github.com/TsubasaHiga/fe_html5-template |
+| 2019.01.22<br>-<br>2019.01.28 | 正式にhtml5テンプレートとして開発開始する為別途リポジトリ用意。凍結。 | Private | https://github.com/TsubasaHiga/fe_template_html5 |
+| 2018.04.25<br>-<br>2019.01.22 | 社内Fork版として開発開始。各種テンプレート管理リポジトリの1つとして管理。 | Private | https://github.com/TsubasaHiga/fe_template/tree/master/html5 |
 
 ## License
 

@@ -9,23 +9,8 @@
 </a>
         <nav class='l-nav'>
             <ul class="l-nav__list">
-                <li class="l-nav__item js-accordion">
-                    <a class="l-nav__link l-lg" href="<?= SITEROOT; ?>hoge1/">nav1</a>
-                    <p class="l-nav__link l-sm">nav1</p>
-                    <ul>
-                        <li>
-                            <a class="l-nav__link" href="<?= SITEROOT; ?>hoge1/hoge1-1/">nav1-1</a>
-                        </li>
-                    </ul>
-                </li>
                 <li class="l-nav__item">
-                    <a class="l-nav__link" href="<?= SITEROOT; ?>hoge2/">nav2</a>
-                </li>
-                <li class="l-nav__item">
-                    <a class="l-nav__link" href="<?= SITEROOT; ?>hoge3/">nav3</a>
-                </li>
-                <li class="l-nav__item">
-                    <a class="l-nav__link" href="<?= SITEROOT; ?>hoge4/">nav4</a>
+                    <a class="l-nav__link" href="<?= SITEROOT; ?>hoge1/">nav2</a>
                 </li>
             </ul>
         </nav>

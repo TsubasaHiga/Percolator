@@ -8,17 +8,19 @@
     display: table;
 }
 
-
 // swiper.js
 // ----------------------------------------------------------
 .swiper-container {
-    height: 300px;
-    width: 600px;
+    height: 100%;
+    width: 100%;
+
     img {
-        object-fit: cover;
         height: 100%;
         width: 100%;
+
+        @include object-fit(cover);
     }
+
     @include media(sm) {
         width: 100%;
     }
