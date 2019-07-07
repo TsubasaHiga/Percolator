@@ -7,12 +7,15 @@ $PAGENAME === 'top' ? $ogtype = 'website' : $ogtype = 'article';
 <html lang="ja" prefix="og: http://ogp.me/ns#">
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
-    <meta name="skype_toolbar" content="skype_toolbar_parser_compatible">
-    <meta name="viewport" content="width=device-width">
+
+    <title><?= $TITLE . '｜' . SITENAME; ?></title>
     <meta name="description" content="<?= $DESCRIPTION; ?>">
-    <meta name="keywords" content="<?= $KEYWORDS; ?>">
-    <meta property="fb:app_id" content="<?= FB_APPID; ?>">
+    <meta name="author" content="HigaTsubasa｜COFUS">
+    <link rel="canonical" href="<?= PAGEURL; ?>">
+
     <meta property="og:locale" content="ja_JP">
     <meta property="og:type" content="<?= $ogtype; ?>">
     <meta property="og:title" content="<?= $TITLE . '｜' . SITENAME; ?>">
@@ -20,19 +23,15 @@ $PAGENAME === 'top' ? $ogtype = 'website' : $ogtype = 'article';
     <meta property="og:url" content="<?= PAGEURL; ?>">
     <meta property="og:site_name" content="<?= SITENAME; ?>">
     <meta property="og:image" content="<?= SITEURL; ?>assets/images/ogpimg.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:description" content="<?= $DESCRIPTION; ?>">
-    <meta name="twitter:title" content="<?= $TITLE; ?>">
-    <meta name="twitter:image" content="<?= SITEURL; ?>assets/images/ogpimg.png">
-    <title><?= $TITLE . '｜' . SITENAME; ?></title>
-    <link rel="canonical" href="<?= PAGEURL; ?>">
+    <meta property="fb:app_id" content="<?= FB_APPID; ?>">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@_cofus">
+    <meta name="twitter:creator" content="@_cofus">
+
     <link rel="shortcut icon" href="<?= SITEURL; ?>assets/images/favicon.ico">
-    <!--preload-->
+
     <link rel="preload" as="style" href="<?= SITEURL; ?>assets/css/style.css">
     <link rel="preload" as="script" href="<?= SITEURL; ?>assets/js/bundle.js">
-    <!--load-->
     <link rel="stylesheet" href="<?= SITEURL; ?>assets/css/style.css">
     <?php
     require_once HTTP_PATH . '/analytics-head.php';
