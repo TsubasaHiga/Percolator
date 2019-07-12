@@ -3,7 +3,7 @@ require_once '../inc/common.php';
 
 // ページ固有の設定変数
 $TITLE       = 'html5マークアップテストユニット';
-$PAGENAME    = 'hoge4';
+$PAGENAME    = 'hoge1';
 $DESCRIPTION = 'サンプルディスクリプションです。';
 $KEYWORDS    = 'サンプルキーワード1,サンプルキーワード2';
 
