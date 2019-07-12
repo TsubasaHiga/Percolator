@@ -23,6 +23,8 @@ $PAGENAME === 'top' ? $ogtype = 'website' : $ogtype = 'article';
     <meta property="og:url" content="<?= PAGEURL; ?>">
     <meta property="og:site_name" content="<?= SITENAME; ?>">
     <meta property="og:image" content="<?= SITEURL; ?>assets/images/ogpimg.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="fb:app_id" content="<?= FB_APPID; ?>">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@_cofus">
