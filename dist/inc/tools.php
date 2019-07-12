@@ -55,24 +55,25 @@ function c_getCopyrighDate($then)
 */
 function c_genBreadcrumbs($page_relation_list)
 {
-    $SITEURL         = SITEURL;
-    $BREADCRUMBS_TOP = BREADCRUMBS_TOP;
+    $_ = function ($s) {
+        return $s;
+    };
 
     $html_first = <<< EOM
-    <span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="{$BREADCRUMBS_TOP}" href="{$SITEURL}" class="home"><span property="name">{$BREADCRUMBS_TOP}</span></a><meta property="position" content="1"></span>
+    <span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="{$_(BREADCRUMBS_TOP)}" href="{$_(SITEURL)}" class="home"><span property="name">{$_(BREADCRUMBS_TOP)}</span></a><meta property="position" content="1"></span>
 EOM;
 
-    $i = 2;
-    $html = "<div class='l-breadcrumbs' typeof='BreadcrumbList' vocab='https://schema.org/'>";
+    $i     = 2;
+    $html  = "<div class='l-breadcrumbs' typeof='BreadcrumbList' vocab='https://schema.org/'>";
     $html .= "<div class='l-breadcrumbs__inner'>";
     $html .= $html_first;
     foreach ($page_relation_list as $page_name => $page_url) {
         $html .= "<span property='itemListElement' typeof='ListItem'>";
-        $html .= "<a property='item' typeof='WebPage' title='{$page_name}' href='{$SITEURL}{$page_url}/'>";
+        $html .= "<a property='item' typeof='WebPage' title='{$page_name}' href='{$_(SITEURL)}{$page_url}/'>";
         $html .= "<span property='name'>{$page_name}</span>";
-        $html .= "</a>";
+        $html .= '</a>';
         $html .= "<meta property='position' content='{$i}'>";
-        $html .= "</span>";
+        $html .= '</span>';
         $i ++;
     }
     $html .= "</div></div>\n";
