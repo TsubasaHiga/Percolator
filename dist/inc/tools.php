@@ -103,7 +103,7 @@ function c_genSnsBtn($title, $pageurl, $kind, $class)
     switch ($kind) {
         case 'TW':
             $html = <<< EOM
-            <a class="{$class}" href="https://www.facebook.com/dialog/share?text={$title};url={$pageurl}" target="_blank" rel="noopener" aria-label="twitter">twitter</a>
+            <a class="{$class}" href="https://twitter.com/intent/tweet?url={$pageurl}&text={$title}" target="_blank" rel="noopener" aria-label="twitter">twitter</a>
 EOM;
             return $html;
             break;
