@@ -21,9 +21,12 @@
 // 17. first, notfirst
 // 18. last, notlast
 // 19. expand
-// 20. 1.25倍
+// 20. expansion
 // 21. placeholder
 // 22. picture100
+// 23. tryangle
+// 24. circle
+// 25. square
 // ----------------------------------------------------------
 
 // 01__画像置換
@@ -376,10 +379,10 @@
     margin: #{$top}px #{$right}px #{$bottom}px #{$left}px;
 }
 
-// 20__1.25倍
+// 20__expansion
 // ----------------------------------------------------------
-@mixin expansion($verticale, $horizontal) {
-    transform: scale(1.25);
+@mixin expansion($verticale, $horizontal, $scale) {
+    transform: scale($scale);
     transform-origin: $verticale $horizontal;
 }
 
@@ -418,4 +421,55 @@
         height: 100%;
         width: 100%;
     }
+}
+
+// 23__tryangle
+// ----------------------------------------------------------
+@mixin tryangle($width, $height, $color, $rotate) {
+    border-style: solid;
+    content: '';
+    height: 0;
+    position: absolute;
+    width: 0;
+
+    @if ($rotate == 'top') {
+        border-color: transparent transparent $color transparent;
+        border-width: 0 #{$width/2}px #{$height}px #{$width/2}px;
+    }
+
+ @else if ($rotate == 'right') {
+        border-color: transparent transparent transparent $color;
+        border-width: #{$width/2}px 0 #{$width/2}px #{$height}px;
+    }
+
+ @else if ($rotate == 'bottom') {
+        border-color: $color transparent transparent transparent;
+        border-width: #{$height}px #{$width/2}px 0 #{$width/2}px;
+    }
+
+ @else if ($rotate == 'left') {
+        border-color: transparent $color transparent transparent;
+        border-width: #{$width/2}px #{$height}px #{$width/2}px 0;
+    }
+}
+
+// 24__circle
+// ----------------------------------------------------------
+@mixin circle($width, $height, $color) {
+    background-color: #{$color};
+    border-radius: 50%;
+    content: '';
+    height: #{$height}px;
+    position: absolute;
+    width: #{$width}px;
+}
+
+// 25__square
+// ----------------------------------------------------------
+@mixin square($width, $height, $color) {
+    background-color: #{$color};
+    content: '';
+    height: #{$height}px;
+    position: absolute;
+    width: #{$width}px;
 }
